@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link href="styles/style.css" rel="stylesheet">
+  <style>
+    .collapsible {
+      position: relative;
+      resize: none;
+      font-family: PassionOne;
+      background-color: #C33;
+      color: white;
+      cursor: pointer;
+      padding: 8px;
+      padding-left: 30px;
+      margin-top: 10px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 25px;
+    }
+
+    .active,
+    .collapsible:hover {
+      background-color: #E33;
+    }
+
+    .content {
+      padding: 18px;
+      display: none;
+      overflow: hidden;
+      background-color: #f1f1f1;
+    }
+
+    .del_form {
+      position: absolute;
+      top: 5px;
+      right: -3px;
+    }
+
+    .del_Button {
+      position: absolute;
+      right: 10px;
+      box-shadow: inset 0px 29px 0px -5px #ffffff;
+      background-color: #d6d6d6;
+      border-radius: 3px;
+      display: inline-block;
+      cursor: pointer;
+      color: #f50808;
+      font-family: Arial;
+      font-size: 15px;
+      font-weight: bold;
+      padding: 5px 7px;
+      text-decoration: none;
+    }
+
+    .del_Button:hover {
+      background-color: #ffffff;
+    }
+
+    .del_Button:active {
+      position: relative;
+      top: 1px;
+    }
+  </style>
+</head>
+
+<body height="1000px">
+
+  <%- include('../partials/header'); %>
+
+  <div class="inbox">
+
+    <% inbox_items.forEach(function(inbox_item){ %>
+
+    <div type="button" class="collapsible" @click.self="parent">
+      <%- inbox_item.title %>
+      <form class="del_form" action="/api/delete_notification" method="post">
+        <button class="del_Button" @click="del" type="submit" name="post_id" value="<%- inbox_item._id %>" class="btn-link">X</button>
+      </form>
+    </div>
+    <div class="content">
+      <p><%- inbox_item.content %></p>
+    </div>
+
+    <% }); %>
+
+  </div>
+</body>
+
+<script>
+  var coll = document.getElementsByClassName("collapsible");
+  var i;
+
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function(e) {
+      e = window.event || e;   // Checks if the target of
+      if (this === e.target) { // click event is not child button
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      }
+    });
+  }
+</script>
+
+</html>

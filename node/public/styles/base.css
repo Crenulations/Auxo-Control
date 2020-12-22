@@ -1,0 +1,231 @@
+@font-face {
+  font-family: Castoro;
+  src: url(../res/fonts/Castoro-Regular.ttf);
+}
+@font-face {
+  font-family: PassionOne;
+  src: url(../res/fonts/PassionOne-Regular.ttf);
+}
+
+/* ============= PHONE SCREEN ==============*/
+
+@media only screen and (max-width: 400px) {
+  .card-4 .card-body {
+    padding: 30px 30px;
+    padding-bottom: 65px;
+  }
+}
+/* ============= NORMAL SCREEN =============== */
+
+@media only screen and (min-width: 400px) {
+  .card-4 .card-body {
+    padding: 57px 65px;
+    padding-bottom: 65px;
+  }
+}
+
+/* ============ CORE =========================*/
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  font-family: Castoro;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+/* === BACKGROUND === */
+
+.page-wrapper{
+  min-height: 100vh;
+  padding-top: 50px;
+  padding-bottom: 100px;
+
+  background: linear-gradient(163deg, #00efff, #d205ff);
+  background-size: 400% 400%;
+
+  -webkit-animation: GradientAnimation 32s ease infinite;
+  -moz-animation: GradientAnimation 32s ease infinite;
+  animation: GradientAnimation 32s ease infinite;
+}
+
+
+@-webkit-keyframes GradientAnimation {
+    0%{background-position:5% 0%}
+    50%{background-position:96% 100%}
+    100%{background-position:5% 0%}
+}
+@-moz-keyframes GradientAnimation {
+    0%{background-position:5% 0%}
+    50%{background-position:96% 100%}
+    100%{background-position:5% 0%}
+}
+@keyframes GradientAnimation {
+    0%{background-position:5% 0%}
+    50%{background-position:96% 100%}
+    100%{background-position:5% 0%}
+}
+
+/* ==========================================================================
+   #CARD
+   ========================================================================== */
+.card {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background: #fff;
+}
+
+.card-4 {
+  background: #fff;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+}
+
+.card-4 .card-body-slim {
+  padding: 20px 20px;
+}
+
+.wrapper {
+  margin: 0 auto;
+}
+
+.wrapper--w960 {
+  max-width: 960px;
+}
+
+.wrapper--w780 {
+  max-width: 780px;
+}
+
+.wrapper--w680 {
+  max-width: 680px;
+}
+
+/* =========== BUTTONS ==================*/
+
+.btn {
+  display: inline-block;
+  line-height: 50px;
+  padding: 0 50px;
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  font-size: 25px;
+  outline: none;
+  border: none;
+  color: #fff;
+  text-decoration: none;
+  font-family: PassionOne;
+}
+
+.btn--radius {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.btn--radius-2 {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.btn--pill {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+
+.btn--green {
+  background: #57b846;
+}
+
+.btn--green:hover {
+  background: #4dae3c;
+}
+
+.btn--blue {
+  background: #4272d7;
+}
+
+.btn--blue:hover {
+  background: #3868cd;
+}
+
+
+/* ============== MINOR STYLES ==============*/
+
+h1{
+  font-size: 40px;
+}
+
+h2{
+  font-size: 30px;
+  margin: 0;
+  text-align: left;
+}
+
+pre{
+  background-color: #23241f;
+  color: #f8f8f2;
+  overflow: visible;
+  white-space: pre-wrap;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+/* ==========================================================================
+   #GRID
+   ========================================================================== */
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.row-space {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.col-1 {
+  width: 100%;
+  text-align: center;
+}
+
+.col-2 {
+  width: -webkit-calc((100% - 30px) / 2);
+  width: -moz-calc((100% - 30px) / 2);
+  width: calc((100% - 30px) / 2);
+}
+
+@media (max-width: 767px) {
+  .col-2 {
+    width: 100%;
+  }
+}

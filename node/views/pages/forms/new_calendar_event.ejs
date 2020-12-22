@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link href="../styles/base.css" rel="stylesheet">
+  <link href="../styles/sizing.css" rel="stylesheet">
+  <link href="../styles/forms_style.css" rel="stylesheet">
+
+  <link href="../libs/datepicker/daterangepicker.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/6a9c3572c9.js" crossorigin="anonymous"></script>
+</head>
+
+<body height="1000px">
+
+  <%- include('../../partials/header'); %>
+
+  <div class="page-wrapper">
+    <div class="wrapper wrapper--w680">
+      <div class="card card-4">
+        <div class="card-body">
+          <h1>New Event</h1>
+          <form class="event_form p-t-20" action="/api/new_calendar_event" method="post">
+
+
+            <div class="row row-space">
+              <div class="col-2">
+                <div class="input-group">
+                  <label class="label">Title</label>
+                  <input class="input--style-4" type="text" name="title">
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="input-group">
+                  <label class="label">Color</label>
+                  <input class="input--style-4 color-picker" data-jscolor="{position:'center'}" name="color" value="2CAFFE">
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row row-space">
+              <div class="col-2">
+                <div class="input-group">
+                  <label class="label">Start Date</label>
+                  <div class="input-group-icon">
+                    <input  name="start_date" class="input--style-4 js-datepicker date_input" type="text">
+                    <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="input-group">
+                  <div class="time-picker-group">
+                    <div class="time-buttons">
+                      <button class="timeBut" type="button"><i class="fas fa-chevron-up"></i></button>
+                      <button class="timeBut" type="button"><i class="fas fa-chevron-up"></i></button>
+                      <button class="timeBut" type="button"><i class="fas fa-chevron-up"></i></button>
+                    </div>
+                    <input name="start_hours" class="hours input--style-4 time-picker">
+                    <input name="start_minutes" class="minutes input--style-4 time-picker">
+                    <input name="start_am_pm" class="am-pm input--style-4 time-picker">
+
+                    <div class="time-buttons">
+                      <button class="timeBut" type="button"><i class="fas fa-chevron-down"></i></button>
+                      <button class="timeBut" type="button"><i class="fas fa-chevron-down"></i></button>
+                      <button class="timeBut" type="button"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row row-space">
+              <div class="col-2">
+                <div class="input-group">
+                  <label class="label">End Date</label>
+                  <div class="input-group-icon">
+                    <input name="end_date" class="input--style-4 js-datepicker date_input" type="text">
+                    <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="input-group">
+                  <div class="time-picker-group">
+                    <div class="time-buttons">
+                      <button class="timeBut" type="button"><i class="fas fa-chevron-up"></i></button>
+                      <button class="timeBut" type="button"><i class="fas fa-chevron-up"></i></button>
+                      <button class="timeBut" type="button"><i class="fas fa-chevron-up"></i></button>
+                    </div>
+                    <input name="end_hours" class="hours input--style-4 time-picker">
+                    <input name="end_minutes" class="minutes input--style-4 time-picker">
+                    <input name="end_am_pm" class="am-pm input--style-4 time-picker">
+
+                    <div class="time-buttons">
+                      <button class="timeBut" type="button"><i class="fas fa-chevron-down"></i></button>
+                      <button class="timeBut" type="button"><i class="fas fa-chevron-down"></i></button>
+                      <button class="timeBut" type="button"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row row-space">
+              <div class="p-t-20">
+                <button class="btn btn--radius-2 btn--blue" type="submit">CREATE EVENT</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <script src="../libs/jquery/jquery.js"></script>
+  <script src="../libs/select2/select2.min.js"></script>
+  <script src="../libs/datepicker/moment.min.js"></script>
+  <script src="../libs/datepicker/daterangepicker.js"></script>
+  <script src="../libs/datepicker/calendarSelector.js"></script>
+
+  <script src="../libs/jscolor.js"></script>
+
+  <script src="../scripts/util.js"></script>
+  <script src="../scripts/time-picker.js"></script>
+
+
+</body>
+
+
+
+
+</html>

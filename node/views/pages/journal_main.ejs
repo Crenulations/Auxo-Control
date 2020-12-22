@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link href="../styles/base.css" rel="stylesheet">
+  <link href="../styles/sizing.css" rel="stylesheet">
+</head>
+
+<link href="../libs/quill/quill.snow.css" rel="stylesheet">
+
+<script src="../libs/jquery/jquery.js"></script>
+<script src="../libs/quill/quill.js"></script>
+<script>
+function quillGetHTML(inputDelta, id) {
+    var tempCont = document.createElement("div");
+    (new Quill(tempCont)).setContents(inputDelta);
+    var result = tempCont.getElementsByClassName("ql-editor")[0].innerHTML;
+
+    document.getElementById(id).innerHTML = result;
+}
+function formatDate(date, id) {
+  var d = new Date(date),
+    month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2)
+        month = '0' + month;
+    if (day.length < 2)
+        day = '0' + day;
+
+    document.getElementById(id).innerHTML = [month, day, year].join('-');
+}
+</script>
+
+<body height="1000px">
+
+  <%- include('../partials/header'); %>
+
+  <div class="page-wrapper">
+    <div class="wrapper wrapper--w680">
+
+      <div class="card card-4">
+        <div class="card-body">
+
+          <div class="row row-space">
+            <div class="col-1">
+              <a class="btn btn--radius-2 btn--blue" href="/forms/new_journal_entry">NEW JOURNAL</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <% journals.forEach(function(journal){ %>
+      <div class="card card-4 m-t-30">
+        <div class="card-body">
+          <div class="row row-space">
+            <div class="col-2" style="font-weight: bold; font-size: 18px;">
+              <p><%- journal.title %></p> <a style="font-weight: normal; font-size: 15px;" href="/journal/<%- journal._id %>">edit</a>
+            </div>
+            <div class="col-2" style="text-align: right;">
+              <p id="<%- journal._id %>_date"></p>
+              <script> formatDate(new Date("<%- journal.date %>"), "<%- journal._id %>_date")</script>
+            </div>
+          </div>
+          <div class="row row-space">
+            <div class="col-1">
+              <hr><br>
+              <div id="<%- journal._id %>_content" style="text-align: left;"></div>
+              <script> quillGetHTML(<%- journal.content %>, "<%- journal._id %>_content")</script>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% }); %>
+
+    </div>
+  </div>
+</body>
+</html>

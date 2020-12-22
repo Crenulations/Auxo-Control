@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link href="../styles/base.css" rel="stylesheet">
+  <link href="../styles/sizing.css" rel="stylesheet">
+  <link href="../styles/forms_style.css" rel="stylesheet">
+
+  <link href="../libs/quill/quill.snow.css" rel="stylesheet">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" />
+  <link rel="stylesheet" href="../libs/highlight-js/styles/lioshi.css" />
+</head>
+
+<body height="1000px">
+
+  <%- include('../../partials/header'); %>
+
+  <div class="page-wrapper">
+    <div class="wrapper wrapper--w680">
+      <div class="card card-4 m-t-30">
+        <div class="card-body-slim">
+
+  <form action="/api/edit_journal_entry/<%- journal._id %>" method="post">
+          <div class="row row-space">
+
+              <div class="col-1">
+                <div id="standalone-container">
+                  <div id="toolbar-container">
+                    <span class="ql-formats">
+                      <select class="ql-font"></select>
+                      <select class="ql-size"></select>
+                    </span>
+                    <span class="ql-formats">
+                      <button class="ql-bold"></button>
+                      <button class="ql-italic"></button>
+                      <button class="ql-underline"></button>
+                      <button class="ql-strike"></button>
+                    </span>
+                    <span class="ql-formats">
+                      <select class="ql-color"></select>
+                      <select class="ql-background"></select>
+                    </span>
+                    <span class="ql-formats">
+                      <button class="ql-script" value="sub"></button>
+                      <button class="ql-script" value="super"></button>
+                    </span>
+                    <span class="ql-formats">
+                      <button class="ql-header" value="1"></button>
+                      <button class="ql-header" value="2"></button>
+                      <button class="ql-blockquote"></button>
+                      <button class="ql-code-block"></button>
+                    </span>
+                    <span class="ql-formats">
+                      <button class="ql-list" value="ordered"></button>
+                      <button class="ql-list" value="bullet"></button>
+                      <button class="ql-indent" value="-1"></button>
+                      <button class="ql-indent" value="+1"></button>
+                    </span>
+                    <span class="ql-formats">
+                      <button class="ql-direction" value="rtl"></button>
+                      <select class="ql-align"></select>
+                    </span>
+                    <span class="ql-formats">
+                      <button class="ql-link"></button>
+                      <button class="ql-image"></button>
+                      <button class="ql-video"></button>
+                      <button class="ql-formula"></button>
+                    </span>
+                    <span class="ql-formats">
+                      <button class="ql-clean"></button>
+                    </span>
+                  </div>
+                  <input name="journal" type="hidden">
+                  <div id="editor-container" style="min-height:200px;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="row row-space p-t-30">
+              <div class="col-2">
+                <div class="input-group">
+                  <input class="input--style-4" type="text" placeholder="Title..." name="title" value="<%- journal.title %>">
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="col-1">
+                  <div class="input-group">
+                    <button id="foo" class="btn btn--radius-2 btn--blue" type="submit">ENTER</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../libs/jquery/jquery.js"></script>
+  <script src="../libs/quill/quill.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+
+  <script>
+    hljs.configure({   // optionally configure hljs
+      languages: ['javascript', 'node.js', 'python']
+    });
+
+
+    var quill = new Quill('#editor-container', {
+      modules: {
+        formula: true,
+        syntax: true,
+        toolbar: '#toolbar-container'
+      },
+      placeholder: 'Blah...',
+      theme: 'snow'
+    });
+
+    quill.setContents(<%- journal.content %>);
+
+
+    // Attaches quill contents to invisible 'journal' input tag
+    // quill.getContents() returns DELTA format
+    var form = document.querySelector('form');
+    form.onsubmit = function() {
+      // Populate hidden form on submit
+      var journal = document.querySelector('input[name=journal]');
+      journal.value = JSON.stringify(quill.getContents());
+    };
+  </script>
+
+  <script src="../scripts/util.js"></script>
+  <script src="../scripts/time-picker.js"></script>
+
+
+
+</body>
+
+
+
+
+</html>

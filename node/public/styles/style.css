@@ -1,0 +1,98 @@
+@font-face {
+  font-family: Castoro;
+  src: url(../res/fonts/Castoro-Regular.ttf);
+}
+@font-face {
+  font-family: PassionOne;
+  src: url(../res/fonts/PassionOne-Regular.ttf);
+}
+
+@media only screen and (max-width: 400px) {
+  body{
+    font-family: Castoro;
+  }
+  .mainContent{
+    padding: 100px 0 100px 0;
+    border: 0px solid black;
+
+
+    text-align: center;
+    font-size: 20px;
+  }
+  .inbox {
+    padding-top: 4em;
+    margin: auto;
+  }
+}
+@media only screen and (min-width: 600px) {
+  body{
+    font-family: Castoro;
+  }
+  .mainContent{
+    padding: 100px 0 100px 0;
+    margin: 0 25% 0 25%;
+    border: 0px solid black;
+
+    text-align: center;
+    font-size: 20px;
+  }
+  .inbox {
+    padding-top: 4em;
+    margin: 0 25% 0 25%;
+  }
+}
+
+.button1 {
+  background-color: #C33;
+  font-family: PassionOne;
+  font-size: 22px;
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.header{
+  position: fixed;
+  text-align: center;
+  margin-top: 10px;
+  width: 100%;
+}
+.header,p{
+  display: inline;
+  text-decoration: none;
+}
+
+h1{
+  font-size: 40px;
+}
+
+h2{
+  font-size: 30px;
+  margin: 0;
+  text-align: left;
+}
+
+
+
+#links{
+  padding: 100px 0px 100px 0px;
+  border: 0px solid black;
+
+  text-align: center;
+  font-size: 50px;
+}
+
+#links>a{
+  display: block;
+  text-decoration: none;
+}
+
+.diet_entries{
+  border: 0px solid black;
+  padding: 0 25% 0 25%;
+}
